@@ -1,0 +1,25 @@
+{
+  "name": "xmpptrix",
+  "version": "0.0.0",
+  "description": "XMPP matrix.org bridge",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SkaveRat/xmpptrix"
+  },
+  "keywords": [
+    "xmpp",
+    "matrix"
+  ],
+  "author": "SkaveRat",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SkaveRat/xmpptrix/issues"
+  },
+  "dependencies": {
+    "stanza.io": "~7.2.1"
+  }
+}
