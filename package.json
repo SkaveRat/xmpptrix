@@ -24,5 +24,10 @@
     "node-xmpp-core": "~1.0.0-alpha14",
     "node-stringprep": "~0.7.0",
     "restify": "~3.0.3"
+  },
+  "devDependencies": {
+    "gulp-uglify": "~1.2.0",
+    "gulp": "~3.9.0",
+    "gulp-browserify": "~0.5.1"
   }
 }

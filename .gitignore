@@ -3,3 +3,6 @@
 
 #deps
 node_modules
+
+#distribution
+dist
