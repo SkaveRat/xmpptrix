@@ -20,6 +20,9 @@
     "url": "https://github.com/SkaveRat/xmpptrix/issues"
   },
   "dependencies": {
-    "stanza.io": "~7.2.1"
+    "node-xmpp-client": "~1.0.0-alpha20",
+    "node-xmpp-core": "~1.0.0-alpha14",
+    "node-stringprep": "~0.7.0",
+    "restify": "~3.0.3"
   }
 }
