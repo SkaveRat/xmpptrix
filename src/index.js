@@ -139,10 +139,11 @@ function prepareClients() {
             var queryStanza = stanza.getChild('query');
             if(queryStanza.attrs.xmlns == 'jabber:iq:roster') {
                 var jids = getContactsFromQueryStanza(queryStanza);
-                var jid = jids[0];
-                if(!roomExists(jid)) {
-                    createRoom(jid)
-                }
+                jids.forEach(function (jid) {
+                    if(!roomExists(jid)) {
+                        createRoom(jid)
+                    }
+                });
             }
         });
 
