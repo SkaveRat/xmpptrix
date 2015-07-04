@@ -10,7 +10,7 @@ var access_token ='aeY9ay8wahqu0pheo1zah2sozohcu4Ciexo0eev1ja';
 var xmpp_jid = 'matrix@skaverat.net';
 var xmpp_password = 'f00b4r';
 
-var mx_user = '@' + mx_localpart + ': ' + mx_host;
+var mx_user = '@' + mx_localpart + ':' + mx_host;
 var URL_CREATE_ROOM = '/_matrix/client/api/v1/createRoom?access_token=' + access_token + '&user_id=';
 var URL_SEND_MESSAGE = '/_matrix/client/api/v1/rooms/{room_id}/send/m.room.message?access_token={access_token}&user_id={user_id}';
 var server = restify.createServer();
@@ -113,11 +113,7 @@ function sendMessage(sender, message) {
     });
 }
 
-var rooms = [
-    //{   room_id: '!TZaeCAqTYsmDQQFPbz:m.skaverat.net',
-    //    jid: 'skaverat@skaverat.net'
-    //}
-];
+var rooms = [];
 
 
 server.put('/transactions/:transaction', putTransaction);
