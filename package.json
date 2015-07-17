@@ -23,7 +23,9 @@
     "node-xmpp-client": "~1.0.0-alpha20",
     "node-xmpp-core": "~1.0.0-alpha14",
     "node-stringprep": "~0.7.0",
-    "restify": "~3.0.3"
+    "restify": "~3.0.3",
+    "nedb": "~1.1.2",
+    "prompt": "~0.2.14"
   },
   "devDependencies": {
     "gulp-uglify": "~1.2.0",
