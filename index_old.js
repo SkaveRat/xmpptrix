@@ -17,7 +17,7 @@ var access_token ='etooyio6aethaiquoo4mamaju2quahSi2iecaezahv';
 var URL_CREATE_ROOM = '/_matrix/client/api/v1/createRoom?access_token=' + access_token + '&user_id=';
 var URL_SEND_MESSAGE = '/_matrix/client/api/v1/rooms/{room_id}/send/m.room.message?access_token={access_token}&user_id={user_id}';
 var server = restify.createServer();
-var http = restify.createJSONClient({url: 'https://'+ mx_host+':' + mx_port, rejectUnauthorized: false});
+
 server.use(restify.bodyParser({ }));
 var clients = [];
 

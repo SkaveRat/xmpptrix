@@ -6,3 +6,7 @@ node_modules
 
 #distribution
 dist
+
+#databases
+accounts.db
+settings.db
