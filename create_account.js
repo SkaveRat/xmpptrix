@@ -1,4 +1,4 @@
-#!/usr/bin/node
+#!/usr/bin/env node
 
 var  Datastore = require('nedb')
     ,prompt = require('prompt')
@@ -36,8 +36,9 @@ prompt.get(properties, function (err, result) {
     if (err) { return onErr(err); }
 
     db.insert(result, function (err, newDocs) {
-        console.log(err);
-        console.log(newDocs);
+		if(err) {
+			console.log(err);
+		}
     })
 });
 

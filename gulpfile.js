@@ -1,12 +1,17 @@
 var gulp = require('gulp');
 var uglify = require('gulp-uglify');
-var concat = require('gulp-concat');
 
-gulp.task('uglify', function() {
-    gulp.src('src/**/*.js')
-        .pipe(concat('index.js'))
-        .pipe(uglify())
-        .pipe(gulp.dest('dist'));
+gulp.task('dist', function() {
+	gulp.src(['index.js'])
+		//.pipe(uglify())
+		.pipe(gulp.dest('dist'));
+
+    gulp.src('lib/*.js')
+        //.pipe(uglify())
+        .pipe(gulp.dest('dist/lib'));
+
+	gulp.src(['package.json', 'create_account.js'])
+		.pipe(gulp.dest('dist'));
 });
 
-gulp.task('default',['uglify']);
+gulp.task('default',['dist']);
