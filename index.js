@@ -1,9 +1,9 @@
 'use strict';
-var restify  = require('restify')
-    , Bridge = require('./lib/bridge.js')
-    , Client = require('node-xmpp-client')
-    , ltx    = require('node-xmpp-core').ltx
-    , Datastore    = require('nedb')
+var restify     = require('restify')
+    , Bridge    = require('./lib/bridge.js')
+    , Client    = require('node-xmpp-client')
+    , ltx       = require('node-xmpp-core').ltx
+    , Datastore = require('nedb')
     ;
 
 var server = restify.createServer();
@@ -17,6 +17,10 @@ var db = new Datastore({
     filename: 'accounts.db'
     ,autoload: true
 });
+var settingsdb = new Datastore({
+    filename: 'settings.db'
+    ,autoload: true
+});
 
 function handleIncoming(req, res, next) {
     var event = req.body.events[0]; //TODO multiple events?
@@ -27,7 +31,6 @@ function handleIncoming(req, res, next) {
     }
 
     var room_id = event.room_id;
-    //var message = event.content.body;
     bridges.forEach(function(bridge) {
         if (bridge.isInRoom(room_id)) {
             bridge.handleEvent(event);
@@ -40,12 +43,20 @@ function handleIncoming(req, res, next) {
 
 server.listen(61444, function() {
 
-    db.find({}, function (err, accounts) {
-        console.log("Found " + accounts.length + " accounts. Connecting...");
+    settingsdb.find({}).limit(1).exec(function (err, settings) {
+        if(settings.length == 0) {
+            console.log("No settings found. Please run 'setup' first.");
+            process.exit();
+        }
 
-        accounts.forEach(function (account) {
-            var bridge = new Bridge(account, db);
-            bridges.push(bridge)
+        db.find({}, function (err, accounts) {
+            console.log("Found " + accounts.length + " accounts. Connecting...");
+
+            accounts.forEach(function (account) {
+                var bridge = new Bridge(account, db, settings[0]);
+                bridges.push(bridge)
+            });
         });
     });
+
 });

@@ -10,7 +10,7 @@ gulp.task('dist', function() {
         //.pipe(uglify())
         .pipe(gulp.dest('dist/lib'));
 
-	gulp.src(['package.json', 'create_account.js'])
+	gulp.src(['package.json', 'create_account.js', 'setup.js'])
 		.pipe(gulp.dest('dist'));
 });
 
