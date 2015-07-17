@@ -24,7 +24,7 @@ var settingsdb = new Datastore({
 
 function handleIncoming(req, res, next) {
     var event = req.body.events[0]; //TODO multiple events?
-    if(event.type != 'm.room.message') { //TODO "|| user_id != mx_user"
+    if(event.type != 'm.room.message') {
         res.send("[]");
         next();
         return;
