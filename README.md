@@ -2,7 +2,15 @@
 
 A WIP xmpp bridge for matrix.org
 
-## Trying it out
+## TODO
+* Better errorhandling
+* More logging
+* Set powerlevel for user to op, so room name can be properly changed
+* handle leaving the room (re-invite on new message)
+* handle adding user to roster (adding @xmpp_* prefixed user)
+* MUC
+
+## Setup
 
 ### Create application server config
 
@@ -42,6 +50,8 @@ app_service_config_files:
 ```
 
 
-### Change the values in the "settings" section in `index.js`
+### Running the setup and adding an account
 
-Line 6-11 contain settings.
+First run `setup.js`, after that run `create_account` to add an xmpp account.
+
+Run the bridge with `node index.js`. You will get an invide for every contact in your roster. This might take a few seconds.
