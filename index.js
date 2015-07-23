@@ -4,7 +4,23 @@ var restify     = require('restify')
     , Client    = require('node-xmpp-client')
     , ltx       = require('node-xmpp-core').ltx
     , Datastore = require('nedb')
+    , bunyan    = require('bunyan')
     ;
+
+var log = bunyan.createLogger({
+    name: 'myapp',
+    streams: [
+        {
+            level: 'info',
+            stream: process.stdout            // log INFO and above to stdout
+        },
+        {
+            level: 'error',
+            path: 'log/error.log'  // log ERROR and above to a file
+        }
+    ]
+});
+
 
 var server = restify.createServer();
 server.use(restify.bodyParser({}));
@@ -45,12 +61,12 @@ server.listen(61444, function() {
 
     settingsdb.find({}).limit(1).exec(function (err, settings) {
         if(settings.length == 0) {
-            console.log("No settings found. Please run 'setup' first.");
+            log.error("No settings found. Please run 'setup' first.");
             process.exit();
         }
 
         db.find({}, function (err, accounts) {
-            console.log("Found " + accounts.length + " accounts. Connecting...");
+            log.info("Found " + accounts.length + " accounts. Connecting...");
 
             accounts.forEach(function (account) {
                 var bridge = new Bridge(account, db, settings[0]);

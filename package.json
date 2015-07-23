@@ -25,7 +25,8 @@
     "node-stringprep": "~0.7.0",
     "restify": "~3.0.3",
     "nedb": "~1.1.2",
-    "prompt": "~0.2.14"
+    "prompt": "~0.2.14",
+    "bunyan": "~1.4.0"
   },
   "devDependencies": {
     "gulp-uglify": "~1.2.0",
