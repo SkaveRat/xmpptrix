@@ -3,6 +3,7 @@
 A WIP xmpp bridge for matrix.org
 
 ## TODO
+* Presence change
 * Better errorhandling
 * More logging
 * Set powerlevel for user to op, so room name can be properly changed
