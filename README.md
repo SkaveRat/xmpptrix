@@ -53,6 +53,18 @@ app_service_config_files:
 
 ### Running the setup and adding an account
 
+Install dependencies with `npm install`.
+
 First run `setup.js`, after that run `create_account` to add an xmpp account.
 
 Run the bridge with `node index.js`. You will get an invide for every contact in your roster. This might take a few seconds.
+
+## Logs
+
+Logs are handles with bunyan. Per default, it logs everything as json.
+
+Stdout will only output INFO levels. There are ERROR and DEBUG logs in the `logs` directory.
+
+To make the output human readable, you can pipe the output into the bunyan CLI tool:
+
+`tail -f log/* | node_modules/bunyan/bin/bunyan`
