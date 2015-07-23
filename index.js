@@ -8,7 +8,7 @@ var restify     = require('restify')
     ;
 
 var log = bunyan.createLogger({
-    name: 'myapp',
+    name: 'xmppbridge',
     streams: [
         {
             level: 'info',
