@@ -5,7 +5,7 @@ var loggerStub = {};
 
 var Accountmanager = proxyquire('../lib/accountmanager', {'./logger': loggerStub});
 
-module.exports.setUp = function (next) {
+exports.setUp = function (next) {
     loggerStub.info = sinon.spy();
     next();
 };
@@ -15,4 +15,3 @@ exports.hasConstructor = function (test) {
     test.ok(loggerStub.info.calledOnce);
     test.done();
 };
-
