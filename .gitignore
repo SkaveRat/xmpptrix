@@ -10,3 +10,6 @@ dist
 #databases
 accounts.db
 settings.db
+
+#logging
+log

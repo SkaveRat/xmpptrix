@@ -22,11 +22,14 @@
   "dependencies": {
     "node-xmpp-client": "~1.0.0-alpha20",
     "node-xmpp-core": "~1.0.0-alpha14",
-    "node-stringprep": "~0.7.0",
+    "node-stringprep": "~0.7.2",
     "restify": "~3.0.3",
     "nedb": "~1.1.2",
     "prompt": "~0.2.14",
-    "bunyan": "~1.4.0"
+    "bunyan": "~1.4.0",
+    "nodeunit": "~0.9.1",
+    "sinon": "~1.15.4",
+    "proxyquire": "~1.6.0"
   },
   "devDependencies": {
     "gulp-uglify": "~1.2.0",
