@@ -29,11 +29,15 @@
     "bunyan": "~1.4.0",
     "nodeunit": "~0.9.1",
     "sinon": "~1.15.4",
-    "proxyquire": "~1.6.0"
+    "proxyquire": "~1.6.0",
+    "es6-module-loader": "~0.17.6",
+    "systemjs": "~0.18.10",
+    "traceur": "0.0.91"
   },
   "devDependencies": {
     "gulp-uglify": "~1.2.0",
     "gulp": "~3.9.0",
-    "gulp-browserify": "~0.5.1"
+    "gulp-browserify": "~0.5.1",
+    "gulp-traceur": "~0.17.1"
   }
 }

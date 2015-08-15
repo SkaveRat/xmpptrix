@@ -1,32 +1,7 @@
-'use strict';
-var restify     = require('restify')
-    , Client    = require('node-xmpp-client')
-    , Account    = require('./lib/account')
-    , ltx       = require('node-xmpp-core').ltx
-    , Datastore = require('nedb')
-    , bunyan    = require('bunyan')
-    , log       = require('./lib/logger')
-    ;
-
-var account_db = new Datastore({
-    filename: 'accounts.db'
-    ,autoload: true
+// bootstrap.js
+var traceur = require('traceur');
+traceur.require.makeDefault(function(filename) {
+    // don't transpile our dependencies, just our app
+    return filename.indexOf('node_modules') === -1;
 });
-var settings = new Datastore({
-    filename: 'settings.db'
-    ,autoload: true
-});
-
-account_db.find({}, function (err, accounts) {
-    log.info("Found " + accounts.length + " accounts. Connecting...");
-
-    accounts.forEach(function (account) {
-
-        new Account(account);
-
-        log.info(account);
-
-        //var bridge = new Bridge(account, db, settings[0]);
-        //bridges.push(bridge)
-    });
-});
+require('./app');

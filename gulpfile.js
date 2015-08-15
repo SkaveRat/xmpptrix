@@ -1,13 +1,13 @@
 var gulp = require('gulp');
-var uglify = require('gulp-uglify');
+var traceur = require('gulp-traceur');
 
 gulp.task('dist', function() {
-	gulp.src(['index.js'])
-		//.pipe(uglify())
+	gulp.src(['*.js'])
+		//.pipe(traceur())
 		.pipe(gulp.dest('dist'));
 
     gulp.src('lib/*.js')
-        //.pipe(uglify())
+        //.pipe(traceur())
         .pipe(gulp.dest('dist/lib'));
 
 	gulp.src(['package.json', 'create_account.js', 'setup.js'])
