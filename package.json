@@ -32,7 +32,9 @@
     "proxyquire": "~1.6.0",
     "es6-module-loader": "~0.17.6",
     "systemjs": "~0.18.10",
-    "traceur": "0.0.91"
+    "traceur": "0.0.91",
+    "matrix-js-sdk": "git+https://github.com/matrix-org/matrix-js-sdk",
+    "request": "~2.60.0"
   },
   "devDependencies": {
     "gulp-uglify": "~1.2.0",
