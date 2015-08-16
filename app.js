@@ -21,24 +21,25 @@ var server = restify.createServer();
 server.use(restify.bodyParser({}));
 server.put('/transactions/:transaction', handleIncoming);
 
+let accounts = [];
+
 
 function handleIncoming(req, res, next) {
     var event = req.body.events[0]; //TODO multiple events?
 
-    log.info(event);
+    if(event.type != 'm.room.message') {
+        res.send("[]");
+        next();
+        return;
+    }
 
-    //if(event.type != 'm.room.message') {
-    //    res.send("[]");
-    //    next();
-    //    return;
-    //}
-    //
-    //var room_id = event.room_id;
-    //bridges.forEach(function(bridge) {
-    //    if (bridge.isInRoom(room_id)) {
-    //        bridge.handleEvent(event);
-    //    }
-    //});
+    var room_id = event.room_id;
+
+    for(let account of accounts) {
+        if (account.isInRoom(room_id)) {
+            account.handleEvent(event);
+        }
+    }
     res.send("[]");
     next();
 }
@@ -46,11 +47,11 @@ function handleIncoming(req, res, next) {
 server.listen(61445, function () {
     settings_db.find({}).limit(1).exec(function (err, settings) {
         settings = settings[0]; //TODO check for missing settings
-        account_db.find({}, function (err, accounts) {
-            log.info("Found " + accounts.length + " accounts. Connecting...");
+        account_db.find({}, function (err, acc) {
+            log.info("Found " + acc.length + " accounts. Connecting...");
 
-            accounts.forEach(function (account) {
-                new Account(account, settings);
+            acc.forEach(function (account) {
+                accounts.push(new Account(account, settings));
             });
         });
     });
