@@ -2,12 +2,7 @@
 
 import Account from './lib/account.js';
 
-var restify     = require('restify')
-    , Client    = require('node-xmpp-client')
-    //, Account    = require('./lib/account')
-    , ltx       = require('node-xmpp-core').ltx
-    , Datastore = require('nedb')
-    , bunyan    = require('bunyan')
+var   Datastore = require('nedb')
     , log       = require('./lib/logger')
     ;
 
@@ -26,10 +21,7 @@ settings_db.find({}).limit(1).exec(function (err, settings) {
         log.info("Found " + accounts.length + " accounts. Connecting...");
 
         accounts.forEach(function (account) {
-
             new Account(account, settings);
-            //var bridge = new Bridge(account, db, settings[0]);
-            //bridges.push(bridge)
         });
     });
 });
